@@ -1,0 +1,20 @@
+CREATE TABLE employee_types (
+	id BIGINT NOT NULL AUTO_INCREMENT,
+	type_name VARCHAR(200) NOT NULL,
+	PRIMARY KEY(id)
+);
+
+CREATE TABLE employees (
+	id BIGINT NOT NULL AUTO_INCREMENT,
+	name VARCHAR(200) NOT NULL,
+	fk_employee_types_id BIGINT NOT NULL,
+	phone VARCHAR(200) NOT NULL,
+	region VARCHAR(200) NOT NULL,
+	salary DOUBLE,
+	hours DOUBLE,
+	PRIMARY KEY(id),
+	FOREIGN KEY(fk_employee_types_id) REFERENCES employee_types(id)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE
+);
+
